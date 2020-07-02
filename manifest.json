@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Udemy Speeds",
+  "version": "1.0",
+  "description": "Muestra más opciones de velocidad de reproducción en Udemy.",
+  "icons": {
+    "48": "icons/udemy.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.udemy.com/*"],
+      "js": ["udemy_speed.js"]
+    }
+  ],
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_icon": "icons/udemy.png",
+    "default_title": "Udemy Speed",
+    "default_popup": "popup/udemy_speed.html"
+  }
+}
