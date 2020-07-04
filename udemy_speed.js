@@ -76,8 +76,6 @@ const videoChanged = (e, speed) => {
 };
 
 const udemySpeeds = async (speed = 1) => {
-  console.log(`Udemy Speed Working... Speed set to ${speed}`);
-
   let list;
   do {
     await sleep(1000);
