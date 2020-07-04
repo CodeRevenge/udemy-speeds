@@ -11,5 +11,10 @@
       "matches": ["*://*.udemy.com/*"],
       "js": ["udemy_speed.js"]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "48.0"
+    }
+  }
 }
