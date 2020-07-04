@@ -1,13 +1,19 @@
 const SPEEDS_LIST_SELECTOR = "menu--playback-rate-menu--11hOW";
 const PARENT_VIDEO_SELECTOR =
   "div[data-purpose=curriculum-item-viewer-content]";
+const SPAN_CLASS_LIST = "playback-rate--playback-rate--1XOKO";
+const LI_CLASS_LIST = ["menu--menu--2Pw42", "menu--item--2IgLt"];
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 const updateSpeed = (event, speed) => {
-  document.getElementsByTagName("video")[0].playbackRate = speed;
+  video = document.getElementsByTagName("video")[0];
+  video.playbackRate = speed;
+  video.onplay = (e) => {
+    e.target.playbackRate = speed;
+  };
   document.getElementById("playback-rate-menu").textContent = "" + speed;
   document.getElementsByClassName("active")[0].classList.remove("active");
   actual = event.target;
@@ -33,17 +39,16 @@ const fillNewSpeeds = (list) => {
     let span = document.createElement("SPAN");
 
     li.setAttribute("role", "presentation");
-    li.classList.add("menu--menu--2Pw42", "menu--item--2IgLt");
+    li.classList.add(...LI_CLASS_LIST);
     if (actualSpeed === newSpeed) {
       li.classList.add("active");
     }
     a.setAttribute("role", "menuitem");
     a.setAttribute("tabindex", "-1");
-    // a.setAttribute("href", "javascript:void(0)");
     a.addEventListener("click", (e) => updateSpeed(e, newSpeed));
     a.addEventListener("onClick", (e) => updateSpeed(e, newSpeed));
     a.addEventListener("onKeyDown", (e) => updateSpeed(e, newSpeed));
-    span.classList.add("playback-rate--playback-rate--1XOKO");
+    span.classList.add(SPAN_CLASS_LIST);
     span.appendChild(document.createTextNode(newSpeed));
     a.appendChild(span);
     li.appendChild(a);
