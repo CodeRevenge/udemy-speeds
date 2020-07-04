@@ -4,6 +4,8 @@
 
 ![Udemy Speeds](./icons/udemy.png)
 
+You can download and install the addon [here](https://addons.mozilla.org/addon/udemyspeeds/).
+
 This extension add new playback rates to udemy videos.
 Is not intended to modiffy the original functionality of Udemy's web page, the extensión just add new posibilities.
 This extensión does not add the option to download the video courses, and it will never be added.
