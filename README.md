@@ -2,6 +2,8 @@
 
 ---
 
+![Udemy Speeds](./icons/udemy.png)
+
 This extension add new playback rates to udemy videos.
 Is not intended to modiffy the original functionality of Udemy's web page, the extensión just add new posibilities.
 This extensión does not add the option to download the video courses, and it will never be added.
