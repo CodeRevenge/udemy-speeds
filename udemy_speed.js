@@ -42,7 +42,7 @@ const fillNewSpeeds = (list, video) => {
   let actualSpeed = video.playbackRate;
   newSpeeds.forEach((newSpeed) => {
     let li = document.createElement("LI");
-    let a = document.createElement("A");
+    let div = document.createElement("DIV");
     let span = document.createElement("SPAN");
 
     li.setAttribute("role", "presentation");
@@ -50,15 +50,16 @@ const fillNewSpeeds = (list, video) => {
     if (actualSpeed === newSpeed) {
       li.classList.add("active");
     }
-    a.setAttribute("role", "menuitem");
-    a.setAttribute("tabindex", "-1");
-    a.addEventListener("click", (e) => updateSpeed(e, newSpeed));
-    a.addEventListener("onClick", (e) => updateSpeed(e, newSpeed));
-    a.addEventListener("onKeyDown", (e) => updateSpeed(e, newSpeed));
+    div.setAttribute("role", "menuitemradio");
+    div.setAttribute("tabindex", "-1");
+    div.classList.add("dropdown-menu-link");
+    div.addEventListener("click", (e) => updateSpeed(e, newSpeed));
+    div.addEventListener("onClick", (e) => updateSpeed(e, newSpeed));
+    div.addEventListener("onKeyDown", (e) => updateSpeed(e, newSpeed));
     span.classList.add(...SPAN_CLASS_LIST);
     span.appendChild(document.createTextNode(newSpeed));
-    a.appendChild(span);
-    li.appendChild(a);
+    div.appendChild(span);
+    li.appendChild(div);
     list.appendChild(li);
   });
 };
@@ -79,10 +80,14 @@ const udemySpeeds = async (speed = 1) => {
   let list;
   do {
     await sleep(1000);
-    list = document.getElementsByTagName("ul")[1];
-  } while (list != undefined && !list.classList.contains(SPEEDS_LIST_SELECTOR));
+    list = document.querySelector("ul." + SPEEDS_LIST_SELECTOR);
+  } while (!list);
+  let video;
+  do {
+    await sleep(1000);
+    video = document.querySelector("video");
+  } while (!video);
   let div = document.querySelector(PARENT_VIDEO_SELECTOR);
-  const video = document.querySelector("video");
   video.playbackRate = speed;
   video.onplay = (e) => {
     e.target.playbackRate = speed;
@@ -99,8 +104,6 @@ const udemySpeeds = async (speed = 1) => {
   if (list.getElementsByTagName("li").length <= 7) fillNewSpeeds(list, video);
 };
 
-if (videoSpeed) {
-  udemySpeeds(videoSpeed);
-} else {
-  udemySpeeds();
-}
+
+
+udemySpeeds(!isNaN(videoSpeed) ? videoSpeed : 1);
