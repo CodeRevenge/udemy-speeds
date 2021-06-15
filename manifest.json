@@ -4,7 +4,8 @@
   "version": "1.1",
   "description": "Muestra más opciones de velocidad de reproducción en Udemy.",
   "icons": {
-    "48": "icons/udemy.png"
+    "48": "icons/udemy-48.png",
+    "196": "icons/udemy-196.png"
   },
   "content_scripts": [
     {
