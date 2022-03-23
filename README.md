@@ -2,7 +2,7 @@
 
 ---
 
-## New Version 1.1 is here [WORKING AGAIN] (June 15th, 2021)
+## New Version 1.2 is here [WORKING AGAIN] (March 22th, 2022)
 
 ![Udemy Speeds](./icons/udemy.png)
 
@@ -26,6 +26,10 @@ Default Udemy's speeds
 
 New Speeds
 
+- 1.1
+- 1.2
+- 1.3
+- 1.4
 - 2.25
 - 2.5
 - 2.75
